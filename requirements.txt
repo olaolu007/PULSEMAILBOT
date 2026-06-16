@@ -2,3 +2,4 @@ python-telegram-bot==20.7
 python-dotenv
 sqlalchemy
 requests
+pip install "python-telegram-bot==13.15"
