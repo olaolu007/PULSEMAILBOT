@@ -569,7 +569,7 @@ async def back_to_inbox(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
     
-    context.user_date["inbox_index"] = max(0, context.user_data.get("inbox_index", 0) - 5)
+    context.user_data["inbox_index"] = max(0, context.user_data.get("inbox_index", 0) - 5)
     
     return await inbox_command(update, context)
 
