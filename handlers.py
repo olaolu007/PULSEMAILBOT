@@ -743,7 +743,7 @@ async def handle_template_selection(update: Update, context: ContextTypes.DEFAUL
             subject,
             body,
             email_format,
-            template_name,
+            template_name
     )
 
     await msg.delete()
