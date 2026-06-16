@@ -1,6 +1,7 @@
 from turtle import back
 import time
 import sqlite3
+from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ConversationHandler, CallbackQueryHandler
 from commands import  start_command, connect_start, connect_email, connect_password, disconnect_email
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
