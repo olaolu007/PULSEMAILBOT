@@ -1,4 +1,3 @@
-from turtle import back
 import time
 import sqlite3
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ConversationHandler, CallbackQueryHandler
@@ -6,8 +5,7 @@ from commands import  start_command, connect_start, connect_email, connect_passw
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from database import init_db, init_last_seen, DB_NAME, get_notif_email, save_notif_email
 from handlers import (inbox_next, 
-                      back_to_message, 
-                      back_to_message, 
+                      back_to_message,
                       read_email, 
                       refresh_inbox, 
                       reply_email, 
