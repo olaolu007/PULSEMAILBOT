@@ -1,7 +1,6 @@
 from turtle import back
 import time
 import sqlite3
-from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ConversationHandler, CallbackQueryHandler
 from commands import  start_command, connect_start, connect_email, connect_password, disconnect_email
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
@@ -149,11 +148,13 @@ def main():
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND,read_email))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, settings_signature_input))
     
-
+    import telegram
+    print("Telegram version:", telegram.__version__)
     
     print("Bot is running...")
     
     app.run_polling()
+    
 
     
 if __name__ == "__main__":
