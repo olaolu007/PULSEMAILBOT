@@ -1,4 +1,6 @@
 import time
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
 import sqlite3
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ConversationHandler, CallbackQueryHandler
 from commands import  start_command, connect_start, connect_email, connect_password, disconnect_email
@@ -148,7 +150,19 @@ def main():
     
     import telegram
     print("Telegram version:", telegram.__version__)
-    
+    class HealthHandler(BaseHTTPRequestHandler):
+      def do_GET(self):
+        self.send_response(200)
+        self.end_handlers()
+        self.wfile.write(b"OK")
+      def log_message(self, format, *args):
+        pass
+
+     def run_health_server():
+       server = HTTPServer(("0.0.0.0", 8000) HealthHandler)
+       server.serve_forever()
+
+     threading.Thread(target=run_health_server, daemon = True).start()
     print("Bot is running...")
     
     app.run_polling()
