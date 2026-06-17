@@ -157,10 +157,9 @@ def main():
         self.wfile.write(b"OK")
       def log_message(self, format, *args):
         pass
-
       def run_health_server():
-       server = HTTPServer(("0.0.0.0", 8000) HealthHandler)
-       server.serve_forever()
+        server = HTTPServer(("0.0.0.0", 8000) HealthHandler)
+        server.serve_forever()
 
      threading.Thread(target=run_health_server, daemon = True).start()
     print("Bot is running...")
