@@ -73,6 +73,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 def main():
     init_db()
     app = ApplicationBuilder().token(BOT_TOKEN).build()
+    print(f"JobQueue status: {app.job_queue}")
 
     connect_handler = ConversationHandler(entry_points=[CallbackQueryHandler(connect_start, pattern="connect_start")],
                                         states={
