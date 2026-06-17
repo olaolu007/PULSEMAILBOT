@@ -52,6 +52,19 @@ from handlers import (inbox_next,
 
 from dotenv import load_dotenv
 import os
+class HealthHandler(BaseHTTPRequestHandler):
+      def do_GET(self):
+          self.send_response(200)
+          self.end_headers()
+          self.wfile.write(b"OK")
+      def log_message(self, format, *args):
+          pass
+
+def run_health_server():
+    server = HTTPServer(("0.0.0.0", 8080), HealthHandler)
+    server.serve_forever()
+
+threading.Thread(target=run_health_server, daemon = True).start()
 
 load_dotenv()
 
@@ -151,19 +164,7 @@ def main():
     import telegram
     print("Telegram version:", telegram.__version__)
     
-    class HealthHandler(BaseHTTPRequestHandler):
-          def do_GET(self):
-              self.send_response(200)
-              self.end_headers()
-              self.wfile.write(b"OK")
-          def log_message(self, format, *args):
-              pass
 
-    def run_health_server():
-        server = HTTPServer(("0.0.0.0", 8080), HealthHandler)
-        server.serve_forever()
-
-    threading.Thread(target=run_health_server, daemon = True).start()
     print("Bot is running...")
     
     app.run_polling()
