@@ -182,6 +182,7 @@ def main():
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, read_email))
 
     print("Bot is running...")
+    print("All Input Working")
     app.run_polling()
 
 
